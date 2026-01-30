@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2026 Oscar A. Martinez. All Rights Reserved.">
+  <meta name="author" content="Oscar A. Martinez">
+  <title>Solar System Simulation - Enhanced Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="solarSystem"></canvas>
+  
+  <div class="controls">
+    <h2>🎮 Controls</h2>
+    
+    <div class="control-group">
+      <label><input type="checkbox" id="showOrbits" checked> Show Orbits</label>
+      <label><input type="checkbox" id="showTrails" checked> Show Trails</label>
+      <label><input type="checkbox" id="showLabels"> Show Labels</label>
+      <label><input type="checkbox" id="showGlow" checked> Glow Effects</label>
+      <label><input type="checkbox" id="showDebug"> Debug Info</label>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="control-group">
+      <h2>✨ New Features</h2>
+      <label><input type="checkbox" id="showPrediction" checked> Orbit Prediction</label>
+      <label><input type="checkbox" id="showLensFlare" checked> Sun Lens Flare</label>
+      <label><input type="checkbox" id="showMilkyWay" checked> Milky Way</label>
+      <label><input type="checkbox" id="showDwarfPlanets"> Dwarf Planets</label>
+      <label><input type="checkbox" id="showMoons"> Major Moons</label>
+      <label><input type="checkbox" id="showInclination"> Orbital Inclination</label>
+      <label><input type="checkbox" id="distanceRuler"> Distance Ruler Mode</label>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="slider-group">
+      <label>Animation Speed: <span id="speedValue">1x</span></label>
+      <input type="range" id="speedSlider" min="0" max="5" step="0.1" value="1">
+    </div>
+    
+    <div class="slider-group">
+      <label>Zoom: <span id="zoomValue">1.0x</span></label>
+      <input type="range" id="zoomSlider" min="0.3" max="3" step="0.1" value="1">
+    </div>
+    
+    <button id="toggleScale">Switch to Realistic Scale</button>
+    <button id="focusPlanet">Focus Next Planet</button>
+    <button id="resetView">Reset View</button>
+  </div>
 
+  <div class="stats">
+    <h2>📊 Live Stats</h2>
+    <div class="stat-item">
+      <div class="stat-label">Simulation Time</div>
+      <div class="stat-value" id="simTime">0 days</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Scale Mode</div>
+      <div class="stat-value" id="scaleMode">Visual</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Focused Object</div>
+      <div class="stat-value" id="focusedPlanet">None</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Position</div>
+      <div class="stat-value" id="planetPos">-</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Distance from Sun</div>
+      <div class="stat-value" id="distanceSun">-</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Orbital Speed</div>
+      <div class="stat-value" id="orbitalSpeed">-</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Orbital Progress</div>
+      <div class="stat-value" id="orbitalProgress">-</div>
+    </div>
+    <div class="stat-item" id="distanceRulerStats" style="display: none;">
+      <div class="stat-label">Distance Between</div>
+      <div class="stat-value" id="rulerDistance">-</div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="info-title">🌟 Enhanced Solar System</div>
+    <div id="featureInfo">
+      <strong>New Features:</strong><br>
+      • Realistic planetary textures<br>
+      • Enhanced star field with Milky Way<br>
+      • Rings for all gas giants<br>
+      • Sun lens flare effect<br>
+      • Orbital inclination (3D perspective)<br>
+      • Dwarf planets (Pluto, Ceres, etc.)<br>
+      • Major moons of outer planets<br>
+      • Distance ruler tool<br>
+      • Orbit path prediction<br>
+      • Realistic/Visual scale toggle<br>
+      <br>
+      <em>Click "Focus Next Planet" to explore!</em>
+    </div>
+  </div>
+
+  <footer class="copyright">
+    <p>© 2026 Oscar A. Martinez. All Rights Reserved.</p>
+    <p><a href="https://www.linkedin.com/in/oscaram007/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+    <details>
+      <summary style="cursor: pointer; color: #6ec1ff; margin-top: 5px;">View Full Copyright Notice</summary>
+      <div style="margin-top: 10px; font-size: 10px; line-height: 1.4; max-height: 200px; overflow-y: auto; text-align: left;">
+        <p><strong>Copyright © 2026 by Oscar A. Martinez</strong></p>
+        <p>All rights reserved. This software, source code, documentation, and associated materials (collectively, "the Work") are protected under the copyright laws of the United States and international copyright treaties.</p>
+        <p><strong>Restrictions:</strong> No part of this Work may be reproduced, modified, adapted, distributed, publicly displayed, performed, or transmitted in any form or by any means—including but not limited to electronic, mechanical, digital reproduction, version control systems, code repositories, or cloud storage—without the prior written permission of the author, except as expressly permitted below or under applicable copyright law.</p>
+        <p><strong>Permitted Uses:</strong> Brief code snippets may be quoted in reviews, tutorials, academic papers, or other noncommercial commentary for purposes of illustration, critique, or education, provided proper attribution is given.</p>
+        <p><strong>Prohibited Actions:</strong> The following are strictly prohibited without explicit written authorization:</p>
+        <ul style="margin-left: 15px;">
+          <li>Copying, forking, or cloning this code for redistribution</li>
+          <li>Incorporating this code into other projects, whether open-source or proprietary</li>
+          <li>Reverse engineering, decompiling, or disassembling any compiled portions</li>
+          <li>Removing or altering copyright notices, attribution, or licensing information</li>
+          <li>Commercial use, sublicensing, or sale of this Work or derivatives thereof</li>
+        </ul>
+        <p>Any unauthorized use, reproduction, or distribution of this Work may result in civil and criminal liability under applicable law. The moral rights of the author have been asserted.</p>
+      </div>
+    </details>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
