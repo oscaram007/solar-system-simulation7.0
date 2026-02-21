@@ -187,7 +187,7 @@ Potential features for future versions:
 **Oscar A. Martinez**
 - LinkedIn: [https://www.linkedin.com/in/oscaram007/](https://www.linkedin.com/in/oscaram007/)
 
-## 📄 Copyright & License
+## 📜📄 Copyright & License
 
 **Copyright © 2026 by Oscar A. Martinez**
 
